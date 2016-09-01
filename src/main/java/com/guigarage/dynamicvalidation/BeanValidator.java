@@ -7,11 +7,11 @@ import java.util.function.Supplier;
 
 public interface BeanValidator<T> {
 
-    <V> BeanValidator<T> withProperty(String name, Supplier<V> valueSupplier);
+    <V> BeanValidator<T> withProperty(String propertyName, Supplier<V> valueSupplier);
 
-    <V> BeanValidator<T> withProperty(String name, Supplier<V> valueSupplier, Consumer<Set<ConstraintViolation<V>>> propertyViolationConsumer);
+    <V> BeanValidator<T> withProperty(String propertyName, Supplier<V> valueSupplier, Consumer<Set<ConstraintViolation<V>>> propertyViolationConsumer);
 
-    <U> BeanValidator<T> withBeanValidator(String contact, BeanValidator<U> contactValidator);
+    <U> BeanValidator<T> withBeanValidator(String propertyName, BeanValidator<U> propertyValidator);
 
     Set<ConstraintViolation<T>> validate(Class<?>... groups);
 
